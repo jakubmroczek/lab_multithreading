@@ -9,7 +9,7 @@ public class ExecutorFactory {
         ASYNCHRONOUS
     }
 
-    Executor create(Behaviour behaviour) {
+    public static Executor create(Behaviour behaviour) {
         switch (behaviour) {
             case SEQUENTIAL:
                 return Runnable::run;
