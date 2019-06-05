@@ -4,11 +4,12 @@ import java.util.concurrent.Executor;
 import java.util.stream.IntStream;
 
 public class BetterRadar {
-    private PatriotBattery battery;
+
+    private PatriotLaunchingStrategy launchingStrategy;
     private Executor executor;
 
-    public BetterRadar(PatriotBattery battery, Executor executor)  {
-        this.battery = battery;
+    public BetterRadar(PatriotLaunchingStrategy launchingStrategy, Executor executor)  {
+        this.launchingStrategy = launchingStrategy;
         this.executor = executor;
     }
 
@@ -18,7 +19,7 @@ public class BetterRadar {
 
     private void launchPatriot() {
         executor.execute(() -> {
-            IntStream.range(0, 10).forEach(x -> battery.launchPatriot());
+           launchingStrategy.launchPatriot();
         });
     }
 }
